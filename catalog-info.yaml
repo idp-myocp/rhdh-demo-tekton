@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "rhdh-demo-tekton"
+  description: "demo to dan"
+  annotations:
+    argocd/app-name: rhdh-demo-tekton-dev
+    backstage.io/kubernetes-id: rhdh-demo-tekton
+    backstage.io/kubernetes-namespace: rhdh-demo-tekton-dev
+    backstage.io/techdocs-ref: url:https://github.com//
+    janus-idp.io/tekton-enabled : 'true'
+    github.com/project-slug: idp-myocp/rhdh-demo-tekton
+    quay.io/repository-slug: "froberge/rhdh-demo-tekton"
+  
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.home.myocp.net/#https://github.com/idp-myocp/rhdh-demo-tekton?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.home.myocp.net/#https://github.com/idp-myocp/rhdh-demo-tekton?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "group:default/janus-authors"
+  providesApis:
+    - "rhdh-demo-tekton"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "rhdh-demo-tekton"
+  description: "demo to dan"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "group:default/janus-authors"
+  definition:
+    $text: ./openapi.yaml
